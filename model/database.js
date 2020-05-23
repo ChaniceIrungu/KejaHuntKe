@@ -11,16 +11,34 @@ const con = mysql.createConnection({
   user: DB_USER || "root",
   password: DB_PASS,
   database: DB_NAME || "facebook",
-  multipleStatements: true
+  multipleStatements: true,
 });
 
-con.connect(function(err) {
+con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 
-  let sql =
-    "DROP TABLE if exists students; CREATE TABLE students(id INT NOT NULL AUTO_INCREMENT, firstname VARCHAR(40) not null, lastname VARCHAR(40) not null, PRIMARY KEY (id));";
-  con.query(sql, function(err, result) {
+  let sql = `DROP TABLE apartments;
+    DROP TABLE clients;
+    CREATE TABLE apartments (
+      id int NOT NULL AUTO_INCREMENT,
+      location varchar(255) NOT NULL AUTO_INCREMENT,
+      number_of_bedrooms varchar(255) NOT NULL AUTO_INCREMENT,
+      user_id int NOT NULL,
+      parking_space BOOLEAN NOT NULL,
+      PRIMARY KEY (id)
+    );
+    
+    CREATE TABLE owners (
+      User varchar(255) NOT NULL,
+      id int NOT NULL AUTO_INCREMENT,
+      PRIMARY KEY (id)
+    );
+    
+    ALTER TABLE apartments ADD CONSTRAINT apartments_fk0 FOREIGN KEY (user_id) REFERENCES owners(id);
+    
+    `;
+  con.query(sql, function (err, result) {
     if (err) throw err;
     console.log("Table creation `students` was successful!");
 
