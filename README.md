@@ -11,7 +11,7 @@ cd client and run npm install. This will install client dependencies (React).
 Database Prep
 Access the MySQL interface in your terminal by running mysql -u root -p
 Create a new database called hhk
-: create database hhk
+: create database hhk;
 
 Add a .env file to the main folder of this repository containing the MySQL authentication information for MySQL user. For example:
 DB_HOST=localhost
@@ -21,7 +21,7 @@ DB_PASS=YOURPASSWORD
 Run npm run migrate in the main folder of this repository, in a new terminal window. This will create a table called 'apartments' in your database.
 
 Make sure you understand how the apartments
-table is constructed. In your MySQL console, you can run use hh; and then describe apartments
+table is constructed. In your MySQL console, you can run use hhk; and then describe apartments
 ; to see the structure of the apartments
 table.
 

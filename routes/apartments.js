@@ -35,8 +35,8 @@ router.post("/", function (req, res, next) {
         "${number_of_bedrooms}",
         "${parking_space}");`
   )
-    .then(() => {
-      getAllApartments(req, res);
+    .then((results) => {
+      res.send({ msg: "your data was inputted correctly" });
     })
     .catch((err) => res.status(500).send(err));
 });
@@ -46,8 +46,8 @@ router.delete("/:id", function (req, res, next) {
   //your code here
   const { id } = req.params;
   db(`DELETE FROM apartments WHERE id = ${id};`)
-    .then(() => {
-      getAllApartments(req, res);
+    .then((results) => {
+      res.send({ msg: "your data was deleted correctly" });
     })
     .catch((err) => res.status(500).send(err));
 });

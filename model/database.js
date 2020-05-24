@@ -19,12 +19,12 @@ con.connect(function (err) {
   console.log("Connected!");
 
   let sql = `DROP TABLE apartments;
-    DROP TABLE clients;
+    DROP TABLE owners;
     CREATE TABLE apartments (
       id int NOT NULL AUTO_INCREMENT,
-      location varchar(255) NOT NULL AUTO_INCREMENT,
-      number_of_bedrooms varchar(255) NOT NULL AUTO_INCREMENT,
-      user_id int NOT NULL,
+      location varchar(255),
+      number_of_bedrooms varchar(255),
+      user_id int NULL AUTO_INCREMENT ,
       parking_space BOOLEAN NOT NULL,
       PRIMARY KEY (id)
     );
