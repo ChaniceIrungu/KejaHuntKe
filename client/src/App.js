@@ -47,9 +47,9 @@ class App extends Component {
     return (
       <Router>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="#">
-            React example
-          </a>
+          <Link to="/" className="navbar-brand">
+            Main Page
+          </Link>
           <button
             class="navbar-toggler"
             type="button"
@@ -64,9 +64,9 @@ class App extends Component {
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <link to="/ApartmentForm" className="nav-link">
-                  ApartmentForm
-                </link>
+                <Link to="/App" className="nav-link">
+                  Apartments
+                </Link>
               </li>
             </ul>
           </div>
@@ -76,7 +76,7 @@ class App extends Component {
             <h1>House Hunting Kenya</h1>
             <h3>Keja Hunting made Easier!!</h3>
             <switch>
-              <Route Path="/ApartmentForm">
+              <Route Path="/App">
                 <ApartmentForm onAdd={this.onAddApartment} />
               </Route>
             </switch>
