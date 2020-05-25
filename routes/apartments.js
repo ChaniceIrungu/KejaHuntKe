@@ -18,12 +18,12 @@ router.get("/:id", function (req, res, next) {
   //your code here
   const { id } = req.params;
   db(`SELECT * FROM apartments WHERE id = ${id};`)
-    .then(() => {
-      getAllApartments(req, res);
+    .then((results) => {
+      res.send(results.data[0]);
     })
     .catch((err) => res.status(500).send(err));
 });
-// INSERT a new student into the DB
+// INSERT a new apartment into the DB
 router.post("/", function (req, res, next) {
   //your code here
   const { location, number_of_bedrooms, parking_space } = req.body;
@@ -35,13 +35,13 @@ router.post("/", function (req, res, next) {
         "${number_of_bedrooms}",
         "${parking_space}");`
   )
-    .then((results) => {
-      res.send({ msg: "your data was inputted correctly" });
+    .then(() => {
+      getAllApartments(req, res);
     })
     .catch((err) => res.status(500).send(err));
 });
 
-// DELETE a student from the DB
+// DELETE an apartment from the DB
 router.delete("/:id", function (req, res, next) {
   //your code here
   const { id } = req.params;

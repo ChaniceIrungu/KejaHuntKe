@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ApartmentForm from "./components/ApartmentForm";
 import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
@@ -36,24 +37,53 @@ class App extends Component {
       .then((res) => res.json())
       .then(this.getAllApartments);
   }
-  onAddApartment = () => {
-    this.getAllApartments;
-  };
+  onAddApartment() {
+    this.getAllApartments();
+  }
 
   render() {
     const { apartments } = this.state;
 
     return (
-      <div className="container">
-        <div className="App">
+      <Router>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="#">
+            React example
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item active">
+                <link to="/ApartmentForm" className="nav-link">
+                  ApartmentForm
+                </link>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div className="container pt-4">
           <div className="my-4">
-            <h1>House Hunting Nairobi</h1>
+            <h1>House Hunting Kenya</h1>
             <h3>Keja Hunting made Easier!!</h3>
-            <ApartmentForm onAddApartment={this.onAddApartment} />
+            <switch>
+              <Route Path="/ApartmentForm">
+                <ApartmentForm onAdd={this.onAddApartment} />
+              </Route>
+            </switch>
           </div>
 
           <div>
-            <ul className="my-3 list-group" className="text-black">
+            <ul className="my-3 list-group text-black">
               {apartments.map((apartment) => (
                 <li
                   key={apartment.id}
@@ -74,7 +104,7 @@ class App extends Component {
             </ul>
           </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }

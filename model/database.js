@@ -24,8 +24,7 @@ con.connect(function (err) {
       id int NOT NULL AUTO_INCREMENT,
       location varchar(255),
       number_of_bedrooms varchar(255),
-      user_id int NULL AUTO_INCREMENT ,
-      parking_space BOOLEAN NOT NULL,
+      parking_space varchar(255),
       PRIMARY KEY (id)
     );
     
@@ -34,8 +33,6 @@ con.connect(function (err) {
       id int NOT NULL AUTO_INCREMENT,
       PRIMARY KEY (id)
     );
-    
-    ALTER TABLE apartments ADD CONSTRAINT apartments_fk0 FOREIGN KEY (user_id) REFERENCES owners(id);
     
     `;
   con.query(sql, function (err, result) {

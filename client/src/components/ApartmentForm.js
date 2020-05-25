@@ -29,8 +29,8 @@ export default class apartmentForm extends Component {
       }),
     })
       .then((response) => response.json())
-      .then(() => {
-        this.props.onAddApartments();
+      .then((response) => {
+        this.props.onAddApartment(response);
       });
   };
 
