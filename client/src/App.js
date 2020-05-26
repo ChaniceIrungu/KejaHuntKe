@@ -58,8 +58,8 @@ class App extends Component {
             </ul>
           </div>
         </nav>
-        <div className="container pt-4">
-          <div className="my-4">
+        <div className="container pt-3">
+          <div className="my-3 text-centre">
             <h1>
               <centre>
                 <strong>House Hunting Kenya</strong>

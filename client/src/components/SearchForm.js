@@ -12,15 +12,16 @@ export default function SearchForm() {
   };
   return (
     <div>
-      <div class="card">
-        <img
-          src="holdingphone.jpg.jpg"
-          className="img-fluid card-img-top  max-width 50%
-          height auto"
-          alt=""
-        />
+      <div class="card col-md-4 px-0 centre">
+        <div class="container">
+          <div class="md-8 px-0">
+            <img src="holdingphone.jpg.jpg" className="img-fluid" alt="" />
+          </div>
+        </div>
         <div class="card-body">
-          <h5 class="card-title">Find A house</h5>
+          <h5 class="card-title">
+            <strong>Find A house</strong>
+          </h5>
           <p class="card-text">
             Pick a city and find your ideal house by the click of a button.{" "}
           </p>

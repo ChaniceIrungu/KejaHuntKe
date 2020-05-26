@@ -39,10 +39,10 @@ router.post("/", function (req, res, next) {
     monthly_rent,
   } = req.body;
   db(
-    `INSERT INTO apartments(location,
+    `INSERT INTO apartments(image, location,
       number_of_bedrooms,
       parking_space,monthly_rent
-      ) VALUES ( "${image}""${location}", 
+      ) VALUES ( "house1.jpg","${location}", 
         "${number_of_bedrooms}",
         "${parking_space}","${monthly_rent}");`
   )
@@ -56,8 +56,8 @@ router.delete("/:id", function (req, res, next) {
   //your code here
   const { id } = req.params;
   db(`DELETE FROM apartments WHERE id = ${id};`)
-    .then((results) => {
-      res.send({ msg: "your data was deleted correctly" });
+    .then(() => {
+      getAllApartments(req, res);
     })
     .catch((err) => res.status(500).send(err));
 });

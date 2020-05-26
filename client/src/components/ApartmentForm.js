@@ -4,7 +4,7 @@ export default class apartmentForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: "house1.jpg",
+      image: "",
       location: "",
       number_of_bedrooms: "",
       parking_space: "",
@@ -73,7 +73,7 @@ export default class apartmentForm extends Component {
           type="text"
           name="parking_space"
           value={parking_space}
-          placeholder="select parking spaces "
+          placeholder="parking spaces "
           onChange={this.handleInput}
           className="form-control my-2"
         ></input>
@@ -81,7 +81,7 @@ export default class apartmentForm extends Component {
           type="number"
           name="monthly_rent"
           value={monthly_rent}
-          placeholder="select parking spaces "
+          placeholder="monthly_rent "
           onChange={this.handleInput}
           className="form-control my-2"
         ></input>
@@ -89,7 +89,7 @@ export default class apartmentForm extends Component {
           type="text"
           name="image"
           value={image}
-          placeholder="select parking spaces "
+          placeholder="image "
           onChange={this.handleInput}
           className="form-control my-2"
         ></input>

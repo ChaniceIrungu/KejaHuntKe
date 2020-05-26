@@ -23,9 +23,18 @@ export default function SearchList(props) {
             className=" list-group-item d-flex justify-content-between"
           >
             <span>
-              {apartment.location} {apartment.number_of_bedrooms}{" "}
-              {apartment.parking_space} {apartment.monthly_rent}{" "}
-              <img src={apartment.image} alt="" />
+              <strong>
+                This luxurious apartment is in {apartment.location}. It has {""}
+                {apartment.number_of_bedrooms} bedrooms and{" "}
+                {apartment.parking_space} parking space(s). Rent is{" "}
+                {apartment.monthly_rent}
+                /month.
+              </strong>
+              <img
+                src={apartment.image}
+                alt=""
+                className="img-fluid col-md-6 px-0"
+              />
             </span>
           </li>
         ))}
