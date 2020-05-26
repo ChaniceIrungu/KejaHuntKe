@@ -23,8 +23,9 @@ export default function SearchList(props) {
             className=" list-group-item d-flex justify-content-between"
           >
             <span>
-              {apartment.location} {apartment.number_of_bedrooms}
-              {apartment.parking_space} {monthly_rent}
+              {apartment.location} {apartment.number_of_bedrooms}{" "}
+              {apartment.parking_space} {apartment.monthly_rent}{" "}
+              <img src={apartment.image} alt="" />
             </span>
           </li>
         ))}

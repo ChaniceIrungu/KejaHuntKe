@@ -4,6 +4,7 @@ export default class apartmentForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      image: "house1.jpg",
       location: "",
       number_of_bedrooms: "",
       parking_space: "",
@@ -18,6 +19,7 @@ export default class apartmentForm extends Component {
   //on subit change to add aprtment
   addApartment = () => {
     const {
+      image,
       location,
       number_of_bedrooms,
       parking_space,
@@ -28,6 +30,7 @@ export default class apartmentForm extends Component {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        image,
         location,
         number_of_bedrooms,
         parking_space,
@@ -42,6 +45,7 @@ export default class apartmentForm extends Component {
 
   render() {
     const {
+      image,
       location,
       number_of_bedrooms,
       parking_space,
@@ -77,6 +81,14 @@ export default class apartmentForm extends Component {
           type="number"
           name="monthly_rent"
           value={monthly_rent}
+          placeholder="select parking spaces "
+          onChange={this.handleInput}
+          className="form-control my-2"
+        ></input>
+        <input
+          type="text"
+          name="image"
+          value={image}
           placeholder="select parking spaces "
           onChange={this.handleInput}
           className="form-control my-2"

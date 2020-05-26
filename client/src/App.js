@@ -3,16 +3,12 @@ import ApartmentForm from "./components/ApartmentForm";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import SearchList from "./components/SearchList";
-import MainPage from "./components/MainPage";
+
 import SearchForm from "./components/SearchForm";
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: "",
-      number_of_bedrooms: "",
-      parking_space: "",
-      monthly_rent: "",
       apartments: [],
     };
   }
@@ -82,9 +78,6 @@ class App extends Component {
               </Route>
               <Route path="/search">
                 <SearchList />
-              </Route>
-              <Route path="/">
-                <MainPage />
               </Route>
             </Switch>
           </div>

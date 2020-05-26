@@ -14,9 +14,10 @@ export default function SearchForm() {
     <div>
       <div class="card">
         <img
-          src="PhoneSearch.jpg"
-          class="card-img-top w3-round"
-          alt="house hunting"
+          src="holdingphone.jpg.jpg"
+          className="img-fluid card-img-top  max-width 50%
+          height auto"
+          alt=""
         />
         <div class="card-body">
           <h5 class="card-title">Find A house</h5>
