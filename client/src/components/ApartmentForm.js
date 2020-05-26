@@ -17,7 +17,12 @@ export default class apartmentForm extends Component {
   };
   //on subit change to add aprtment
   addApartment = () => {
-    const { location, number_of_bedrooms, parking_space } = this.state;
+    const {
+      location,
+      number_of_bedrooms,
+      parking_space,
+      monthly_rent,
+    } = this.state;
 
     fetch(`/apartments`, {
       method: "POST",
@@ -26,6 +31,7 @@ export default class apartmentForm extends Component {
         location,
         number_of_bedrooms,
         parking_space,
+        monthly_rent,
       }),
     })
       .then((response) => response.json())
@@ -35,7 +41,12 @@ export default class apartmentForm extends Component {
   };
 
   render() {
-    const { location, number_of_bedrooms, parking_space } = this.state;
+    const {
+      location,
+      number_of_bedrooms,
+      parking_space,
+      monthly_rent,
+    } = this.state;
     return (
       <form>
         <input
@@ -58,6 +69,14 @@ export default class apartmentForm extends Component {
           type="text"
           name="parking_space"
           value={parking_space}
+          placeholder="select parking spaces "
+          onChange={this.handleInput}
+          className="form-control my-2"
+        ></input>
+        <input
+          type="number"
+          name="monthly_rent"
+          value={monthly_rent}
           placeholder="select parking spaces "
           onChange={this.handleInput}
           className="form-control my-2"

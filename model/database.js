@@ -18,8 +18,8 @@ con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 
-  let sql = `DROP TABLE apartments;
-    DROP TABLE owners;
+  let sql = `DROP TABLE IF EXISTS apartments;
+    DROP TABLE IF EXISTS owners;
     CREATE TABLE apartments (
       id int NOT NULL AUTO_INCREMENT,
       location varchar(255),
@@ -37,7 +37,7 @@ con.connect(function (err) {
     `;
   con.query(sql, function (err, result) {
     if (err) throw err;
-    console.log("Table creation `students` was successful!");
+    console.log("Table creation `apartments` was successful!");
 
     console.log("Closing...");
   });

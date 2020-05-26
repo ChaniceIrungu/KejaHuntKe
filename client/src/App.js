@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import ApartmentForm from "./components/ApartmentForm";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import SearchList from "./components/SearchList";
+import MainPage from "./components/MainPage";
+import SearchForm from "./components/SearchForm";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -10,23 +12,10 @@ class App extends Component {
       location: "",
       number_of_bedrooms: "",
       parking_space: "",
-
+      monthly_rent: "",
       apartments: [],
     };
   }
-
-  componentDidMount() {
-    this.getAllApartments();
-  }
-
-  getAllApartments = () => {
-    fetch(`/apartments`)
-      .then((response) => response.json())
-      .then((response) => {
-        this.setState({ apartments: response });
-      });
-  };
-
   deleteItem(id) {
     fetch(`/apartments/${id}`, {
       method: "DELETE",
@@ -40,15 +29,12 @@ class App extends Component {
   onAddApartment() {
     this.getAllApartments();
   }
-
   render() {
-    const { apartments } = this.state;
-
     return (
       <Router>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <Link to="/" className="navbar-brand">
-            Main Page
+            Keja Hunt KE
           </Link>
           <button
             class="navbar-toggler"
@@ -63,9 +49,14 @@ class App extends Component {
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-              <li class="nav-item active">
-                <Link to="/App" className="nav-link">
-                  Apartments
+              <li class="nav-item ">
+                <Link to="/search" className="nav-link">
+                  All Apartments
+                </Link>
+              </li>
+              <li class="nav-item ">
+                <Link to="/create" className="nav-link">
+                  List Your apartment
                 </Link>
               </li>
             </ul>
@@ -73,40 +64,33 @@ class App extends Component {
         </nav>
         <div className="container pt-4">
           <div className="my-4">
-            <h1>House Hunting Kenya</h1>
-            <h3>Keja Hunting made Easier!!</h3>
-            <switch>
-              <Route Path="/App">
+            <h1>
+              <centre>
+                <strong>House Hunting Kenya</strong>
+              </centre>
+            </h1>
+            <h3>
+              <centre>
+                <strong>Keja Hunting made Easier!!</strong>
+              </centre>
+            </h3>
+            ​
+            <SearchForm />​
+            <Switch>
+              <Route path="/create">
                 <ApartmentForm onAdd={this.onAddApartment} />
               </Route>
-            </switch>
-          </div>
-
-          <div>
-            <ul className="my-3 list-group text-black">
-              {apartments.map((apartment) => (
-                <li
-                  key={apartment.id}
-                  className=" list-group-item d-flex justify-content-between"
-                >
-                  <span>
-                    {apartment.location} {apartment.number_of_bedrooms}
-                    {apartment.parking_space}
-                  </span>
-                  <button
-                    onClick={() => this.deleteItem(apartment.id)}
-                    className="btn btn-danger"
-                  >
-                    DELETE
-                  </button>
-                </li>
-              ))}
-            </ul>
+              <Route path="/search">
+                <SearchList />
+              </Route>
+              <Route path="/">
+                <MainPage />
+              </Route>
+            </Switch>
           </div>
         </div>
       </Router>
     );
   }
 }
-
 export default App;
