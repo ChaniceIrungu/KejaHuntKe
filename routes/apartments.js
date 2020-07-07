@@ -32,7 +32,6 @@ router.get("/:id", function (req, res, next) {
 router.post("/", function (req, res, next) {
   //your code here
   const {
-    image,
     location,
     number_of_bedrooms,
     parking_space,
