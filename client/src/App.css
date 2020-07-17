@@ -1,18 +1,72 @@
 body {
   background-image: url(https://i.pinimg.com/564x/b9/69/4f/b9694f07a473d74c1703537004b7087e.jpg);
-  background-size: auto 1000px;
+  background-size: auto 1200px;
   background-repeat: repeat-y;
   font-family: Arial, Helvetica, sans-serif;
   background-color: lightslategray;
 }
 
-.App {
-  text-align: center;
+#root {
+  height: 100vh;
+}
+
+.image1 {
+  border: 5px solid white;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 5%;
+}
+
+/* .main-container {
+  min-height: calc(100% - 56px);
+} */
+
+.border-card {
+  background-color: lightslategray;
+  border-bottom-right-radius: 5%;
+  border-top-left-radius: 5%;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.title1 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif,
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: bolder;
+  font-size: 70px;
+  color: white;
+  text-align: center;
+}
+.descrip {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif,
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: bolder;
+  color: white;
+  text-align: justify;
+}
+
+.title2 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif,
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: bolder;
+  font-size: 50px;
+  color: white;
+  text-align: center;
+}
+
+.title3 {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif,
+    "Lucida Sans", Arial, sans-serif;
+  font-weight: bolder;
+  font-size: 90px;
+  color: white;
+  text-align: center;
+}
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  filter: invert(1);
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -1,10 +1,20 @@
 import React, { Component } from "react";
-import ApartmentForm from "./components/ApartmentForm";
-import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import api from "./utils/api";
+import "./App.css";
 import SearchList from "./components/SearchList";
+import ApartmentForm from "./components/ApartmentForm";
+import ApartmentDisplay from "./components/ApartamentDisplay";
+import ListAll from "./components/ListAll";
+import Register from "./components/Register";
+import { NavLink } from "react-router-dom";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
+import Carousel from "react-bootstrap/Carousel";
 
-import SearchForm from "./components/SearchForm";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -12,75 +22,118 @@ class App extends Component {
       apartments: [],
     };
   }
+  getApartmentsFiltered() {
+    api.getApartmentsFiltered().then((response) => {
+      this.setState({ apartments: response.data });
+    });
+  }
+
   deleteItem(id) {
-    fetch(`/apartments/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then(this.getAllApartments);
+    api.deleteItem(id).then((response) => {
+      this.getApartmentsFiltered();
+    });
   }
-  onAddApartment() {
-    this.getAllApartments();
-  }
+
   render() {
     return (
       <Router>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <Link to="/" className="navbar-brand">
+        <Navbar
+          collapseOnSelect
+          expand="md"
+          bg="dark"
+          variant="dark"
+          sticky="top"
+        >
+          <Navbar.Brand as={NavLink} to="/">
             Keja Hunt KE
-          </Link>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <li class="nav-item ">
-                <Link to="/search" className="nav-link">
-                  All Apartments
-                </Link>
-              </li>
-              <li class="nav-item ">
-                <Link to="/create" className="nav-link">
-                  List Your apartment
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <div className="container pt-3">
-          <div className="my-3 text-centre">
-            <h1>
-              <centre>
-                <strong>House Hunting Kenya</strong>
-              </centre>
-            </h1>
-            <h3>
-              <centre>
-                <strong>Keja Hunting made Easier!!</strong>
-              </centre>
-            </h3>
-            ​
-            <SearchForm />​
-            <Switch>
-              <Route path="/create">
-                <ApartmentForm onAdd={this.onAddApartment} />
-              </Route>
-              <Route path="/search">
-                <SearchList />
-              </Route>
-            </Switch>
-          </div>
+            <img height="30" className="d-inline-block align" />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto align-items-center">
+              <Nav.Link as={NavLink} to="/Search">
+                Search apartments
+              </Nav.Link>
+
+              <Nav.Link as={NavLink} to="/all">
+                All the apartments
+              </Nav.Link>
+
+              <Nav.Link as={NavLink} to="/create">
+                List your apartment
+              </Nav.Link>
+            </Nav>
+
+            <Nav.Link as={NavLink} to="/login">
+              <Form inline>
+                <Button variant="dark">Login</Button>
+              </Form>
+            </Nav.Link>
+            <Nav.Link as={NavLink} to="/Register">
+              Register
+            </Nav.Link>
+          </Navbar.Collapse>
+        </Navbar>
+        <div className="main-container d-flex flex-column justify-content-center align-items-center">
+          <h1 className="title1 my-2">House hunting made easier!!</h1>​
+          <Switch>
+            <Route path="/create">
+              <ApartmentForm onAddApartment={this.onAddApartment} />
+            </Route>
+            <Route path="/all">
+              <ListAll />
+            </Route>
+            <Route path="/apartments/:id" component={ApartmentDisplay}>
+              <ApartmentDisplay apartments={this.state.apartments} />
+            </Route>
+            <Route path="/search">
+              <SearchList />
+            </Route>
+            <Route path="/Register">
+              <Register />
+            </Route>
+            <Route path="/">
+              <div>
+                <h2 className="title2">Let us Guide you Home</h2>
+                <h3 className="title3">Keja Hunt KE</h3>
+                <Carousel ClassName="container ms-4">
+                  <Carousel.Item ClassName="container my-4">
+                    <img
+                      className=" carousel d-block w-100"
+                      src="/house1.jpg"
+                      Width="50"
+                      alt="Made in Kenya"
+                      data-interval="7000"
+                    />
+                  </Carousel.Item>
+                  <Carousel.Item ClassName="container my-4">
+                    <img
+                      className=" carousel slide d-inline-block"
+                      style={{
+                        width: "100%",
+                        height: "100vw",
+                        objectFit: "cover",
+                      }}
+                      src="/house2.jpg"
+                      text="First slide&bg=282c34"
+                      alt="Kisumu"
+                      data-interval="7000"
+                    />
+                  </Carousel.Item>
+                  <Carousel.Item>
+                    <img
+                      className=" carousel d-block w-100"
+                      src="/house3.jpg"
+                      width="100"
+                      text="First slide&bg=282c34"
+                      alt="Nairobi"
+                      data-interval="7000"
+                    />
+                  </Carousel.Item>
+                </Carousel>
+              </div>
+            </Route>
+          </Switch>
         </div>
       </Router>
     );
