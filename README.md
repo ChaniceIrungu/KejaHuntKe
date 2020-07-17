@@ -31,3 +31,26 @@ Development
 Run npm start in project directory to start the Express server on port 5000
 cd client and run npm start to start client server in development mode with hot reloading in port 3000.
 Basic Requirements
+FOR THE IMAGES:
+
+> > npm i uuid
+> > npm i mime-types
+> > npm i express-fileupload
+> > Basic Requirements
+
+#STEPS
+[x] the button in de navBar doesn't works!
+[x] reorganize the DB by adding more fields
+[x] add initial values for 1 apartment int the 2 tables
+[x] refact the requests in apartments.js
+[x] check the requests on POSTMAN - falta 1!!
+[x] put the fetch requests in a separated api file
+[x] add a notification if there are no apartments to show
+[x] the form should appear only in the home page
+[x] the form works?
+[x] in the form: add images functionality
+[x] styling the form
+[ ] styling the home page
+[ ] styling the apartment list - FALTEN IMATGES
+[ ] Google Map in the Home page?
+[ ] add a new page for each apartment where we can display the images and read all the information
