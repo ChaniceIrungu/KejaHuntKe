@@ -37,6 +37,8 @@ FOR THE IMAGES:
 > > npm i mime-types
 > > npm i express-fileupload
 > > Basic Requirements
+![Home page](https://user-images.githubusercontent.com/62676665/95111845-c3443900-0748-11eb-80c7-0c0dc282c93d.PNG)
+
 
 #STEPS
 [x] the button in de navBar doesn't works!
